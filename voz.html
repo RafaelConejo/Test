@@ -1,10 +1,12 @@
 <h1>Bienvenido a mi página web</h1>
 <p>Este sitio web te dará la bienvenida en voz alta.</p>
+<button onclick="leerTexto(textoDeBienvenida)">Escuchar bienvenida</button>
+
 <script>
     function leerTexto(texto) {
         if ('speechSynthesis' in window) {
             const mensaje = new SpeechSynthesisUtterance(texto);
-            mensaje.lang = 'es-ES';  // O puedes cambiarlo a 'es-MX'
+            mensaje.lang = 'es-ES';
             mensaje.rate = 1;
             mensaje.pitch = 1;
             window.speechSynthesis.speak(mensaje);
@@ -13,8 +15,6 @@
         }
     }
     const textoDeBienvenida = "Bienvenido a mi página web. Espero que disfrutes tu visita.";
-    document.addEventListener('DOMContentLoaded', function () {
-        leerTexto(textoDeBienvenida);
-    });
 </script>
+
 
