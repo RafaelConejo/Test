@@ -1,20 +1,21 @@
 <h1>Bienvenido a mi página web</h1>
 <p>Este sitio web te dará la bienvenida en voz alta.</p>
-<button onclick="leerTexto(textoDeBienvenida)">Escuchar bienvenida</button>
 
 <script>
+    window.onload = function() {
+        const textoDeBienvenida = "Bienvenido a mi página web. Espero que disfrutes tu visita.";
+        leerTexto(textoDeBienvenida);
+    }
+
     function leerTexto(texto) {
         if ('speechSynthesis' in window) {
             const mensaje = new SpeechSynthesisUtterance(texto);
-            mensaje.lang = 'es-ES';
-            mensaje.rate = 1;
-            mensaje.pitch = 1;
+            mensaje.lang = 'es-ES';  // Establece el idioma como español
+            mensaje.rate = 1;        // Velocidad de lectura
+            mensaje.pitch = 1;       // Tono de voz
             window.speechSynthesis.speak(mensaje);
         } else {
             alert('Lo siento, tu navegador no soporta la API de síntesis de voz.');
         }
     }
-    const textoDeBienvenida = "Bienvenido a mi página web. Espero que disfrutes tu visita.";
 </script>
-
-
