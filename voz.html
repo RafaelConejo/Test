@@ -7,29 +7,36 @@
 </head>
 <body>
     <h1>Bienvenido a mi página web</h1>
-    <p>Este sitio web te dará la bienvenida en voz altakk.</p>
+    <p>Este sitio web te dará la bienvenida en voz alta.</p>
+
+    <!-- Botón para escuchar nuevamente -->
+    <button onclick="leerTexto(textoDeBienvenida)">Escuchar bienvenida</button>
 
     <script>
+        const textoDeBienvenida = "Probando probando probando pum pom pum. rrrr."; // Texto a leer
+
+        // Verificamos si la API de síntesis de voz está disponible en el navegador
         window.onload = function() {
-            // Verificamos si la API de síntesis de voz está disponible en el navegador
             if ('speechSynthesis' in window) {
-                const textoDeBienvenida = "Probando probando probando pum pom pum. rrrr.";
-                leerTexto(textoDeBienvenida);
+                leerTexto(textoDeBienvenida); // Reproducir al cargar la página
             } else {
                 alert('Lo siento, tu navegador no soporta la API de síntesis de voz.');
             }
         };
 
+        // Función para leer el texto
         function leerTexto(texto) {
-            // Creamos el mensaje para sintetizar
             const mensaje = new SpeechSynthesisUtterance(texto);
             mensaje.lang = 'es-ES'; // Idioma español
             mensaje.rate = 1;       // Velocidad normal
             mensaje.pitch = 1;      // Tono normal
 
-            // Iniciamos la lectura
-            window.speechSynthesis.speak(mensaje);
+            window.speechSynthesis.speak(mensaje); // Reproduce el texto
         }
     </script>
 </body>
 </html>
+
+
+
+
