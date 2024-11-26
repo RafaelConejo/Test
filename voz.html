@@ -10,15 +10,14 @@
     <p>Este sitio web te dará la bienvenida en voz alta.</p>
 
     <!-- Botón para escuchar nuevamente -->
-    <button onclick="leerTexto(textoDeBienvenida)">Escuchar bienvenida</button>
+    <button id="botonBienvenida" onclick="leerTexto(textoDeBienvenida)">Escuchar bienvenida</button>
 
     <script>
         const textoDeBienvenida = "Probando probando probando pum pom pum. rrrr."; // Texto a leer
 
-        // Verificamos si la API de síntesis de voz está disponible en el navegador
         window.onload = function() {
             if ('speechSynthesis' in window) {
-                leerTexto(textoDeBienvenida); // Reproducir al cargar la página
+                document.getElementById('botonBienvenida').click(); // Simula un clic en el botón
             } else {
                 alert('Lo siento, tu navegador no soporta la API de síntesis de voz.');
             }
@@ -36,7 +35,6 @@
     </script>
 </body>
 </html>
-
 
 
 
