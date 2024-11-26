@@ -1,21 +1,35 @@
-<h1>Bienvenido a mi página web</h1>
-<p>Este sitio web te dará la bienvenida en voz alta.</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida en voz alta</title>
+</head>
+<body>
+    <h1>Bienvenido a mi página web</h1>
+    <p>Este sitio web te dará la bienvenida en voz alta.</p>
 
-<script>
-    window.onload = function() {
-        const textoDeBienvenida = "Probando probando probando pum pom pum. rrrr.";
-        leerTexto(textoDeBienvenida);
-    }
+    <script>
+        window.onload = function() {
+            // Verificamos si la API de síntesis de voz está disponible en el navegador
+            if ('speechSynthesis' in window) {
+                const textoDeBienvenida = "Probando probando probando pum pom pum. rrrr.";
+                leerTexto(textoDeBienvenida);
+            } else {
+                alert('Lo siento, tu navegador no soporta la API de síntesis de voz.');
+            }
+        };
 
-    function leerTexto(texto) {
-        if ('speechSynthesis' in window) {
+        function leerTexto(texto) {
+            // Creamos el mensaje para sintetizar
             const mensaje = new SpeechSynthesisUtterance(texto);
-            mensaje.lang = 'es-ES';  // Establece el idioma como español
-            mensaje.rate = 1;        // Velocidad de lectura
-            mensaje.pitch = 1;       // Tono de voz
+            mensaje.lang = 'es-ES'; // Idioma español
+            mensaje.rate = 1;       // Velocidad normal
+            mensaje.pitch = 1;      // Tono normal
+
+            // Iniciamos la lectura
             window.speechSynthesis.speak(mensaje);
-        } else {
-            alert('Lo siento, tu navegador no soporta la API de síntesis de voz.');
         }
-    }
-</script>
+    </script>
+</body>
+</html>
